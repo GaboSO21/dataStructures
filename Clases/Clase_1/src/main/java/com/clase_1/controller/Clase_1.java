@@ -5,8 +5,6 @@
 
 package com.clase_1.controller;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author GabrielPC
@@ -14,19 +12,6 @@ import javax.swing.JOptionPane;
 public class Clase_1 {
 
     public static void main(String[] args) {
-       
-        int num = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el numero que desea invertir:"));
-        invertirNum(num);
-    }
-
-
-    public static void invertirNum(int num){
-        if(num<10){
-            System.out.print(num);
-        }else{
-            System.out.print(num%10);
-            num /= 10;
-            invertirNum(num);
-        }
+        System.out.println("Hello World!");
     }
 }
