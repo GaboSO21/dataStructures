@@ -9,7 +9,11 @@ package com.practicaprogramada_1.controller;
 
 /**
  *
- * @author GabrielPC
+ * @Integrantes
+ * Gabriel Sanchez Olveira
+ * Andres Ospina Perilla
+ * Johan Navarro Saenz
+ * Jose Ignacio Jimenez Songg
  */
 public class PracticaProgramada_1 {
 
