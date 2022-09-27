@@ -15,10 +15,6 @@ public class Empleado extends Persona{
         return this.idEmpleado;
     }
 
-    public void setIdEmpleado(int idEmpleado) {
-        this.idEmpleado = idEmpleado;
-    }
-
     public double getSueldo() {
         return this.sueldo;
     }

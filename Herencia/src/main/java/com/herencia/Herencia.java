@@ -24,5 +24,9 @@ public class Herencia {
 
         Empleado empleado2 = new Empleado("Jose", 3000.0);
         System.out.println("empleado2 " + empleado2);
+
+        ;
+        Cliente cliente1 = new Cliente("Pepe", new java.util.Date(), true);
+        System.out.println(cliente1.toString());
     }
 }
