@@ -41,4 +41,30 @@ public class Pila {
 
     }
 
+    public void pop() {
+        // Revisa si la pila esta vacia, si no, establece la anterior cima como la nueva
+        // cima.
+        if (!isEmpty()) {
+            top = top.getSiguiente();
+            JOptionPane.showMessageDialog(null, "Elemento desapilado.", "Pop", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Pila vacia.", "Pop", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public String toString(){
+        String s = "";
+        if(!isEmpty()){
+            Nodo aux = top;
+            while(aux != null){
+                s +=    aux.getDato().toString() + "\n";
+
+                aux = aux.getSiguiente();
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Pila vacia.", "Pop", JOptionPane.ERROR_MESSAGE);
+        }
+        return s;
+    }
+
 }

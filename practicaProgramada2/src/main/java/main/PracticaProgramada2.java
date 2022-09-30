@@ -11,12 +11,10 @@ import Menu.Menu;
  *
  * @author GabrielPC
  */
-public class Clase_2 {
+public class PracticaProgramada2 {
 
     public static void main(String[] args) {
-        
         Menu menu = new Menu();
         menu.mostrar();
-
     }
 }

@@ -36,4 +36,15 @@ public class Animal {
         this.precio = precio;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Animal{");
+        sb.append("especie=").append(especie);
+        sb.append(", tiempoVida=").append(tiempoVida);
+        sb.append(", precio=").append(precio);
+        sb.append('}');
+        return sb.toString();
+    }
+
 }
