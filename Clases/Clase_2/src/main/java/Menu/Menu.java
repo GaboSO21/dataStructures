@@ -28,7 +28,7 @@ public class Menu {
                     mostrar();
                     break;
                 case 3:
-                    JOptionPane.showMessageDialog(null, p.toString(), "Contenido", JOptionPane.INFORMATION_MESSAGE);
+                    p.toString();
                     mostrar();
                     break;
                 case 4:

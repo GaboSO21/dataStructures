@@ -34,7 +34,7 @@ public class Pila {
         if (isEmpty()) {
             top = nuevo;
         } else {
-            // Si esta lleno, apuntamos al siguiente dato y creamos la nueva cima
+            // Si esta lleno, apuntamos al siguiente nodo y creamos la nueva cima
             nuevo.setSiguiente(top);
             top = nuevo;
         }
@@ -61,10 +61,12 @@ public class Pila {
 
                 aux = aux.getSiguiente();
             }
+            return s;
         }else{
             JOptionPane.showMessageDialog(null, "Pila vacia.", "Pop", JOptionPane.ERROR_MESSAGE);
+            return s;
         }
-        return s;
+        
     }
 
 }

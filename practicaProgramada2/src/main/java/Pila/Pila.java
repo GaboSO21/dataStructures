@@ -1,12 +1,10 @@
 package Pila;
 
 import javax.swing.JOptionPane;
-import java.util.Arrays;
 
 public class Pila {
 
     private Nodo top;
-    private static int n;
 
     public Pila() {
         this.top = null;
@@ -24,15 +22,12 @@ public class Pila {
 
         Dato a = new Dato();
         a.setNum(x);
-
         Nodo nuevo = new Nodo();
         nuevo.setDato(a);
 
         if (isEmpty()) {
             top = nuevo;
-            n++;
         } else {
-            n++;
             nuevo.setSiguiente(top);
             top = nuevo;
         }
@@ -48,10 +43,12 @@ public class Pila {
 
                 aux = aux.getSiguiente();
             }
+            return s;
         } else {
             JOptionPane.showMessageDialog(null, "Pila vacia.", "Pop", JOptionPane.ERROR_MESSAGE);
+            return null;
         }
-        return s;
+        
     }
 
     public boolean encuentra(int x) {
@@ -71,44 +68,100 @@ public class Pila {
         if (!isEmpty()) {
             Nodo aux = top;
             while (aux != null) {
-                if (aux.getSiguiente().getDato().getNum() == x) {
+                if (aux.getDato().getNum() == x) {
+                    top = top.getSiguiente();
+                    JOptionPane.showMessageDialog(null, "Elemento extraido.", "Extraer",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                } else if (aux.getSiguiente().getDato().getNum() == x) {
                     aux.setSiguiente(aux.getSiguiente().getSiguiente());
                     JOptionPane.showMessageDialog(null, "Elemento extraido.", "Extraer",
                             JOptionPane.INFORMATION_MESSAGE);
-                    n--;
                     return;
                 } else {
                     aux = aux.getSiguiente();
                 }
+
             }
 
-            JOptionPane.showMessageDialog(null, "Elemento no pudo ser extraido.", "Extraer", JOptionPane.ERROR_MESSAGE);
-
-        }
-
-    }
-
-    public void ordenar() {
-        int[] vec = new int[n+1];
-        for (int i = -1; !isEmpty(); i++) {
-            vec[i] = pop();
-        }
-        Arrays.sort(vec);
-        for (int i = 0; i < vec.length; i++) {
-            push(vec[i]);
-        }
-    }
-
-    private int pop() {
-        if (!isEmpty()) {
-            int x = top.getDato().getNum();
-            top = top.getSiguiente();
-            JOptionPane.showMessageDialog(null, "Elemento desapilado.", "Pop", JOptionPane.INFORMATION_MESSAGE);
-            return x;
         } else {
-            JOptionPane.showMessageDialog(null, "Pila vacia.", "Pop", JOptionPane.ERROR_MESSAGE);
-            return 0;
+            JOptionPane.showMessageDialog(null, "Elemento no pudo ser extraido.", "Extraer", JOptionPane.ERROR_MESSAGE);
         }
+
+    }
+
+    public void ordenarAscendente() {
+
+        Nodo aux = null;
+
+        while (!isEmpty()) {
+            Nodo temp = top;
+            int mayor = temp.getDato().getNum();
+            while (temp != null) {
+                if (mayor > temp.getDato().getNum()) {
+                    mayor = temp.getDato().getNum();
+                } else if (temp.getSiguiente() == null) {
+                    if (top.getSiguiente() == null) {
+                        mayor = top.getDato().getNum();
+                    }
+                    break;
+                } else {
+                    temp = temp.getSiguiente();
+                }
+            }
+            Nodo n = new Nodo();
+            Dato dato = new Dato();
+            n.setDato(dato);
+            n.getDato().setNum(mayor);
+            if (aux == null) {
+                aux = n;
+            } else {
+                n.setSiguiente(aux);
+                aux = n;
+            }
+            extraer(mayor);
+        }
+        top = aux;
+
+    }
+
+    public void ordenarDescendente() {
+
+        Nodo aux = null;
+
+        while (!isEmpty()) {
+            Nodo temp = top;
+            int mayor = temp.getDato().getNum();
+            while (temp != null) {
+                if (mayor > temp.getDato().getNum()) {
+                    mayor = temp.getDato().getNum();
+                } else if (temp.getSiguiente() == null) {
+                    if (top.getSiguiente() == null) {
+                        mayor = top.getDato().getNum();
+                    }
+                    break;
+                } else {
+                    temp = temp.getSiguiente();
+                }
+            }
+            Nodo n = new Nodo();
+            Dato dato = new Dato();
+            n.setDato(dato);
+            n.getDato().setNum(mayor);
+            if (aux == null) {
+                aux = n;
+            } else {
+                n.setSiguiente(aux);
+                aux = n;
+            }
+            extraer(mayor);
+        }
+
+        while (aux != null) {
+            push(aux.getDato().getNum());
+            aux = aux.getSiguiente();
+        }
+
     }
 
 }

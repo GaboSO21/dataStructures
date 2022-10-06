@@ -18,8 +18,9 @@ public class Menu {
             "2. Buscar elemento\n" +
             "3. Extraer elemento\n" +
             "4. Mostrar elementos\n" +
-            "5. Ordenar elementos\n" +
-            "6. Salir\n", "Menu principal", JOptionPane.QUESTION_MESSAGE));
+            "5. Ordenar elementos ascendentemente\n" +
+            "6. Ordenar elementos descendentemente\n"+
+            "7. Salir\n", "Menu principal", JOptionPane.QUESTION_MESSAGE));
             switch(op){
                 case 1:
                     op = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese un numero:", "Push", JOptionPane.INFORMATION_MESSAGE));
@@ -42,14 +43,20 @@ public class Menu {
                     mostrar();
                     break;
                 case 4:
-                    JOptionPane.showMessageDialog(null, p.toString(), "Contenido", JOptionPane.INFORMATION_MESSAGE);
+                    if(p.toString() != null){
+                        JOptionPane.showMessageDialog(null, p.toString(), "Contenido", JOptionPane.INFORMATION_MESSAGE);         
+                    }
                     mostrar();
                     break;
                 case 5:
-                    p.ordenar();
+                    p.ordenarAscendente();
                     mostrar();
                     break;
                 case 6:
+                    p.ordenarDescendente();
+                    mostrar();
+                    break;
+                case 7:
                     System.exit(0);
                     break;
                 default:
