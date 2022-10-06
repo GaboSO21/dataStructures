@@ -9,7 +9,11 @@ import Menu.Menu;
 
 /**
  *
- * @author GabrielPC
+ * @author:
+ * Gabriel Sanchez Olveira
+ * Andres Ospina Perilla
+ * Johan Navarro Saenz
+ * Jose Ignacio Jimenez Songg
  */
 public class PracticaProgramada2 {
 
