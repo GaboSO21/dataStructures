@@ -48,7 +48,7 @@ public class Pila {
             JOptionPane.showMessageDialog(null, "Pila vacia.", "Pop", JOptionPane.ERROR_MESSAGE);
             return null;
         }
-        
+
     }
 
     public boolean encuentra(int x) {
@@ -95,18 +95,18 @@ public class Pila {
         Nodo aux = null;
 
         while (!isEmpty()) {
-            Nodo temp = top;
-            int mayor = temp.getDato().getNum();
-            while (temp != null) {
-                if (mayor > temp.getDato().getNum()) {
-                    mayor = temp.getDato().getNum();
-                } else if (temp.getSiguiente() == null) {
+            Nodo temporal = top;
+            int mayor = temporal.getDato().getNum();
+            while (temporal != null) {
+                if (mayor > temporal.getDato().getNum()) {
+                    mayor = temporal.getDato().getNum();
+                } else if (temporal.getSiguiente() == null) {
                     if (top.getSiguiente() == null) {
                         mayor = top.getDato().getNum();
                     }
                     break;
                 } else {
-                    temp = temp.getSiguiente();
+                    temporal = temporal.getSiguiente();
                 }
             }
             Nodo n = new Nodo();
@@ -122,7 +122,6 @@ public class Pila {
             extraer(mayor);
         }
         top = aux;
-
     }
 
     public void ordenarDescendente() {
@@ -130,18 +129,18 @@ public class Pila {
         Nodo aux = null;
 
         while (!isEmpty()) {
-            Nodo temp = top;
-            int mayor = temp.getDato().getNum();
-            while (temp != null) {
-                if (mayor > temp.getDato().getNum()) {
-                    mayor = temp.getDato().getNum();
-                } else if (temp.getSiguiente() == null) {
+            Nodo temporal = top;
+            int mayor = temporal.getDato().getNum();
+            while (temporal != null) {
+                if (mayor < temporal.getDato().getNum()) {
+                    mayor = temporal.getDato().getNum();
+                } else if (temporal.getSiguiente() == null) {
                     if (top.getSiguiente() == null) {
                         mayor = top.getDato().getNum();
                     }
                     break;
                 } else {
-                    temp = temp.getSiguiente();
+                    temporal = temporal.getSiguiente();
                 }
             }
             Nodo n = new Nodo();
@@ -156,12 +155,6 @@ public class Pila {
             }
             extraer(mayor);
         }
-
-        while (aux != null) {
-            push(aux.getDato().getNum());
-            aux = aux.getSiguiente();
-        }
-
+        top = aux;
     }
-
 }
