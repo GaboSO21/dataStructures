@@ -89,8 +89,15 @@ public class Lista {
         if (!isEmpty()) {
             Nodo aux = inicio;
             while (aux.getSiguiente() != null) {
-                if (aux.getSiguiente().getDato().getId() == id) {
-                    JOptionPane.showMessageDialog(null, "Persona eliminada: " + aux.getSiguiente().getDato().toString(), "Eliminar", 1);
+                if (inicio.getDato().getId() == id) {
+                    JOptionPane.showMessageDialog(null, "Persona eliminada: " + inicio.getDato().toString(),
+                            "Eliminar", 1);
+
+                    inicio = inicio.getSiguiente();
+                    return;
+                } else if (aux.getSiguiente().getDato().getId() == id) {
+                    JOptionPane.showMessageDialog(null, "Persona eliminada: " + aux.getSiguiente().getDato().toString(),
+                            "Eliminar", 1);
                     aux.setSiguiente(aux.getSiguiente().getSiguiente());
                     return;
                 } else {
@@ -107,8 +114,16 @@ public class Lista {
             Nodo aux = inicio;
             Dato dato = null;
             while (aux.getSiguiente() != null) {
-                if (aux.getSiguiente().getDato().getId() == id) {
-                    JOptionPane.showMessageDialog(null, "Persona extraida: " + aux.getSiguiente().getDato().toString(), "Extraer", 1);
+                if (inicio.getDato().getId() == id) {
+                    JOptionPane.showMessageDialog(null, "Persona extraida: " + inicio.getDato().toString(),
+                            "Extraer", 1);
+                    dato = aux.getDato();
+                    inicio = inicio.getSiguiente();
+                    return dato;
+
+                } else if (aux.getSiguiente().getDato().getId() == id) {
+                    JOptionPane.showMessageDialog(null, "Persona extraida: " + aux.getSiguiente().getDato().toString(),
+                            "Extraer", 1);
                     dato = aux.getDato();
                     aux.setSiguiente(aux.getSiguiente().getSiguiente());
                     return dato;

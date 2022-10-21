@@ -55,7 +55,6 @@ public class Menu {
                 for (int i = 0; i < extraidos.length; i++) {
                     if (extraidos[i] != null) {
                         info += extraidos[i].toString() + " || ";
-                        break;
                     }
                 }
                 JOptionPane.showMessageDialog(null, info, "Datos extraidos", 1);
