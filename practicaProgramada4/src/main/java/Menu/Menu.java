@@ -64,7 +64,6 @@ public class Menu {
             default:
                 JOptionPane.showMessageDialog(null, "Error, opcion invalida");
                 Mostrar();
-
         }
     }
 }
