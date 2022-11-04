@@ -9,7 +9,10 @@ import Menu.Menu;
 
 /**
  *
- * @author GabrielPC
+ * @author 
+ * -Gabriel Sanchez Olveira
+ * -Andres Ospina Perilla
+ * -Johan Navarro Saenz
  */
 public class PracticaProgramada5 {
 
