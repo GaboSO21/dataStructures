@@ -67,8 +67,14 @@ public class Arbol {
             System.out.println(raiz.getElemento().getNum() + " ");
         } else {
             try {
-                imprimeNivel(raiz.getHijoIzq(), num, (cont + 1));
-                imprimeNivel(raiz.getHijoDer(), num, (cont + 1));
+                if (raiz.getHijoIzq() == null && raiz.getHijoDer() != null) {
+                    imprimeNivel(raiz.getHijoDer(), num, cont + 1);
+                } else if (raiz.getHijoIzq() != null && raiz.getHijoDer() == null) {
+                    imprimeNivel(raiz.getHijoIzq(), num, cont + 1);
+                } else {
+                    imprimeNivel(raiz.getHijoDer(), num, cont + 1);
+                    imprimeNivel(raiz.getHijoIzq(), num, cont + 1);
+                }
             } catch (NullPointerException e) {
                 System.out.println(e.getMessage());
             }
@@ -77,6 +83,30 @@ public class Arbol {
 
     public void imprimeNivel(int num) {
         this.imprimeNivel(raiz, num, 0);
+    }
+
+    private int getAltura(Nodo raiz, int cont) {
+        if (raiz.getHijoDer() == null && raiz.getHijoIzq() == null) {
+            return cont;
+        } else {
+            try {
+                if (raiz.getHijoIzq() == null && raiz.getHijoDer() != null) {
+                    getAltura(raiz.getHijoDer(), cont + 1);
+                } else if (raiz.getHijoIzq() != null && raiz.getHijoDer() == null) {
+                    getAltura(raiz.getHijoIzq(), cont + 1);
+                } else {
+                    getAltura(raiz.getHijoDer(), cont + 1);
+                    getAltura(raiz.getHijoIzq(), cont + 1);
+                }
+            } catch (NullPointerException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return 0;
+    }
+
+    public int getAltura() {
+        return this.getAltura(raiz, 0);
     }
 
     public void crearRaiz() {
@@ -106,42 +136,6 @@ public class Arbol {
         } else {
             System.out.println("Arbol vacio");
         }
-    }
-
-    private void preOrden(Nodo n) {
-        if (n != null) {
-            System.out.println(n.getElemento().getNum() + " ");
-            preOrden(n.getHijoIzq());
-            preOrden(n.getHijoDer());
-        }
-    }
-
-    public void preOrden() {
-        this.preOrden(raiz);
-    }
-
-    private void inOrden(Nodo n) {
-        if (n != null) {
-            inOrden(n.getHijoIzq());
-            System.out.println(n.getElemento().getNum() + " ");
-            inOrden(n.getHijoDer());
-        }
-    }
-
-    public void inOrden() {
-        this.inOrden(raiz);
-    }
-
-    private void postOrden(Nodo n) {
-        if (n != null) {
-            postOrden(n.getHijoIzq());
-            postOrden(n.getHijoDer());
-            System.out.println(n.getElemento().getNum() + " ");
-        }
-    }
-
-    public void postOrden() {
-        this.postOrden(raiz);
     }
 
 }

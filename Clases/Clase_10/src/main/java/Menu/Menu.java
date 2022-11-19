@@ -14,13 +14,11 @@ public class Menu {
                 "Menu Principal\n" +
                         "1. Agregar elemento\n" +
                         "2. Mostrar elemento (normal)\n" +
-                        "3. Mostrar preOrden\n" +
-                        "4. Mostrar inOrden\n" +
-                        "5. Mostrar postOrden\n" +
-                        "7. Imprimir menor\n" +
-                        "8. Imprime hojas\n" +
-                        "9. Imprime nivel\n" +
-                        "6. Salir\n",
+                        "3. Imprimir menor\n" +
+                        "4. Imprime hojas\n" +
+                        "5. Imprime nivel\n" +
+                        "6. Get altura\n" +
+                        "9. Salir\n",
                 "Menu principal", JOptionPane.QUESTION_MESSAGE));
         switch (op) {
             case 1:
@@ -30,29 +28,25 @@ public class Menu {
                 System.out.println(" ");
                 arbol.mostrarRaiz();
                 mostrar();
-            case 3:
-                arbol.preOrden();
-                mostrar();
-            case 4:
-                arbol.inOrden();
-                mostrar();
-            case 5:
-                arbol.postOrden();
-                mostrar();
-            case 6:
+            case 9:
                 System.exit(0);
                 break;
-            case 7:
+            case 3:
                 System.out.println(" ");
                 arbol.imprimirMenor();
                 mostrar();
-            case 8:
+            case 4:
                 System.out.println(" ");
                 arbol.imprimeHojas();
                 mostrar();
-            case 9:
+            case 5:
                 System.out.println(" ");
-                arbol.imprimeNivel(2);
+                arbol.imprimeNivel(Integer.parseInt(
+                        JOptionPane.showInputDialog(null, "Ingrese nivel a imprimir del arbol: ", "Nivel", 1)));
+                mostrar();
+            case 6:
+                System.out.println(" ");
+                System.out.println(arbol.getAltura());
                 mostrar();
             default:
                 JOptionPane.showMessageDialog(null, "Opcion invalida!", "Error", JOptionPane.ERROR_MESSAGE);
