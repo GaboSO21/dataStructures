@@ -18,6 +18,7 @@ public class Menu {
                         "4. Imprime hojas\n" +
                         "5. Imprime nivel\n" +
                         "6. Get altura\n" +
+                        "7. Contar nodos\n" +
                         "9. Salir\n",
                 "Menu principal", JOptionPane.QUESTION_MESSAGE));
         switch (op) {
@@ -46,7 +47,11 @@ public class Menu {
                 mostrar();
             case 6:
                 System.out.println(" ");
-                System.out.println(arbol.getAltura());
+                System.out.println(arbol.getAltura()-1);
+                mostrar();
+            case 7:
+                System.out.println("");
+                System.out.println(arbol.contarNodos());
                 mostrar();
             default:
                 JOptionPane.showMessageDialog(null, "Opcion invalida!", "Error", JOptionPane.ERROR_MESSAGE);

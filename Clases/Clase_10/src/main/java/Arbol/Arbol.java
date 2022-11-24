@@ -85,28 +85,35 @@ public class Arbol {
         this.imprimeNivel(raiz, num, 0);
     }
 
-    private int getAltura(Nodo raiz, int cont) {
-        if (raiz.getHijoDer() == null && raiz.getHijoIzq() == null) {
-            return cont;
+    private int getAltura(Nodo raiz) {
+        if (raiz == null) {
+            return 0;
         } else {
-            try {
-                if (raiz.getHijoIzq() == null && raiz.getHijoDer() != null) {
-                    getAltura(raiz.getHijoDer(), cont + 1);
-                } else if (raiz.getHijoIzq() != null && raiz.getHijoDer() == null) {
-                    getAltura(raiz.getHijoIzq(), cont + 1);
-                } else {
-                    getAltura(raiz.getHijoDer(), cont + 1);
-                    getAltura(raiz.getHijoIzq(), cont + 1);
-                }
-            } catch (NullPointerException e) {
-                System.out.println(e.getMessage());
+            int izq = getAltura(raiz.getHijoIzq());
+            int der = getAltura(raiz.getHijoDer());
+
+            if (izq > der) {
+                return izq + 1;
+            } else {
+                return der + 1;
             }
         }
-        return 0;
     }
 
     public int getAltura() {
-        return this.getAltura(raiz, 0);
+        return this.getAltura(raiz);
+    }
+
+    private int contarNodos(Nodo raiz) {
+        if (raiz == null) {
+            return 0;
+        } else {
+            return 1 + contarNodos(raiz.getHijoIzq()) + contarNodos(raiz.getHijoDer());
+        }
+    }
+
+    public int contarNodos() {
+        return contarNodos(raiz);
     }
 
     public void crearRaiz() {
