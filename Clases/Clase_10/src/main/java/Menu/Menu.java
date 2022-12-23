@@ -53,6 +53,9 @@ public class Menu {
                 System.out.println("");
                 System.out.println(arbol.contarNodos());
                 mostrar();
+            case 8:
+                System.out.println(arbol.countDuplicates());
+                mostrar();
             default:
                 JOptionPane.showMessageDialog(null, "Opcion invalida!", "Error", JOptionPane.ERROR_MESSAGE);
                 mostrar();

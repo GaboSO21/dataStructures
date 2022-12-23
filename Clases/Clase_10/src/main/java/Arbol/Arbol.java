@@ -145,4 +145,64 @@ public class Arbol {
         }
     }
 
+    private void compararNodo(Nodo raiz, int num, int cont) {
+        if (raiz.getHijoIzq() == null && raiz.getHijoDer() == null) {
+            System.out.println("El numero " + num + " se encuentra " + cont + "veces");
+        } else {
+            try {
+                if (raiz.getHijoIzq() == null && raiz.getHijoDer() != null) {
+                    if (raiz.getHijoDer().getElemento().getNum() == num) {
+                        imprimeNivel(raiz.getHijoDer(), num, cont + 1);
+                    } else {
+                        imprimeNivel(raiz.getHijoDer(), num, cont);
+                    }
+                } else if (raiz.getHijoIzq() != null && raiz.getHijoDer() == null) {
+                    if (raiz.getHijoIzq().getElemento().getNum() == num) {
+                        imprimeNivel(raiz.getHijoIzq(), num, cont + 1);
+                    } else {
+                        imprimeNivel(raiz.getHijoIzq(), num, cont);
+                    }
+                } else {
+                    if (raiz.getHijoDer().getElemento().getNum() == num
+                            && raiz.getHijoIzq().getElemento().getNum() == num) {
+                        imprimeNivel(raiz.getHijoDer(), num, cont + 1);
+                        imprimeNivel(raiz.getHijoIzq(), num, cont + 1);
+                    }
+                    if (raiz.getHijoIzq().getElemento().getNum() == num
+                            && raiz.getHijoDer().getElemento().getNum() != num) {
+                        imprimeNivel(raiz.getHijoIzq(), num, cont + 1);
+                        imprimeNivel(raiz.getHijoDer(), num, cont);
+                    } else if (raiz.getHijoDer().getElemento().getNum() == num &&
+                            raiz.getHijoIzq().getElemento().getNum() == num) {
+                        imprimeNivel(raiz.getHijoDer(), num, cont + 1);
+                        imprimeNivel(raiz.getHijoIzq(), num, cont);
+                    }
+                }
+            } catch (NullPointerException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    public void compararNodo(int num) {
+        this.compararNodo(raiz, num, 0);
+    }
+
+    private int countDuplicates(Nodo root, Nodo prev) {
+        // Basic edge case .. root==null
+        if (root == null){
+            return 0;
+        }
+        // else
+        int count = 0;
+        if (root.getElemento().getNum() == prev.getElemento().getNum()){
+            count++;
+        }
+        return count + countDuplicates(root.getHijoIzq(), root) + countDuplicates(root.getHijoDer(), root);
+    }
+
+    public int countDuplicates(){
+        return this.countDuplicates(raiz, raiz);
+    }
+
 }
